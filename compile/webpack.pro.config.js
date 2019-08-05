@@ -3,19 +3,14 @@ const AutoPrefixer = require('autoprefixer');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const InlineManifestWebpackPlugin = require('inline-manifest2-webpack-plugin');
-const ScriptAttrHtmlWebpackPlugin = require('@u51/script-attr-html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const px2rem = require('@u51/postcss-px2rem');
-const projecName = require('../package.json').name;
+const px2rem = require('postcss-px2rem');
 const sourceModules = require('./source_modules'); // node_modlues中需要进行源码编译的包
 const resolve = require('./resolve');
+const glob = require('glob');
 
 const chunkSorts = ['manifest', 'vendor', 'app'];
-const CDN_ADDRESS = {
-    // img: "//pic.51zhangdan.com/u51/",
-    static: '//h5.u51.com/web.u51.com/storage/',
-};
 
 const px2remConfigs = {
     baseDpr: 1,
@@ -61,13 +56,6 @@ const plugins = [
             // 枚举值 prod: 线上 | test: 测试 | pre: 预发 | stable_project： stable环境
             BUILD_ENV: JSON.stringify(process.env.BUILD_ENV),
         },
-    }),
-    /*
-     * 孔明灯
-     * */
-    new ScriptAttrHtmlWebpackPlugin({
-        chunks: [/\/\/h5.u51.com\//i],
-        attributes: { crossorigin: 'anonymous' },
     }),
     /*
      * 抽出css
@@ -140,59 +128,22 @@ const entry = {
     vendor: ['vue'],
 };
 
-[
-    {
-        pageName: 'app',
-        entry: '../src/pages/index/index.js',
-        template: '../src/index.html',
-        filename: 'index.html', // default [pageName].html
-    },
-    {
-        pageName: 'detail',
-        entry: '../src/pages/detail/index.js',
-        template: '../src/index.html'
-    },
-    {
-        pageName: 'bill',
-        entry: '../src/pages/bill/index.js',
-        template: '../src/index.html'
-    },
-    {
-        pageName: 'share',
-        entry: '../src/pages/share/index.js',
-        template: '../src/index.html'
-    },
-    {
-        pageName: 'take-cash',
-        entry: '../src/pages/take-cash/index.js',
-        template: '../src/index.html'
-    },
-    {
-        pageName: 'login',
-        entry: '../src/pages/login/index.js',
-        template: '../src/index.html'
-    },
-    {
-        pageName: 'invite',
-        entry: '../src/pages/invite/index.js',
-        template: '../src/index.html'
-    },
-    {
-        pageName: 'order',
-        entry: '../src/pages/order/index.js',
-        template: '../src/index.html'
-    },
-    {
-        pageName: 'coupon',
-        entry: '../src/pages/coupon/index.js',
-        template: '../src/index.html'
-    },
-    {
-        pageName: 'card-manage',
-        entry: '../src/pages/card-manage/index.js',
-        template: '../src/index.html'
-    },
-].forEach(page => {
+function getEntry (rootSrc) {
+    const entries = [];
+    glob.sync(rootSrc + '/pages/**/index.js')
+    .forEach(file => {
+        const pageName = file.match(/pages\/(.*)\/index.js/)[1];
+        entries.push({
+            pageName,
+            entry: file,
+            template: '../src/index.html',
+        })
+    })
+    console.log('entries', entries);
+    return entries;
+}
+
+getEntry(resolve.alias.root).forEach(page => {
     entry[page.pageName] = [path.resolve(__dirname, page.entry)];
     plugins.push(new HtmlWebpackPlugin({
         template: path.resolve(__dirname, page.template),
@@ -219,9 +170,7 @@ module.exports = {
         path: path.resolve(__dirname, '../build'),
         filename: '[name].[chunkhash:10].js',
         chunkFilename: '[id].[chunkhash:10].js',
-        publicPath: `${CDN_ADDRESS.static}${projecName}/`,
-        // publicPath: './',
-        crossOriginLoading: 'anonymous', // 有chunk并且资源文件是在h5.u51.com的工程
+        publicPath: './',
     },
     module: {
         loaders: [

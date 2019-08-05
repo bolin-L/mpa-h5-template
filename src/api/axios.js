@@ -1,7 +1,4 @@
-import axios from '@u51/axios/dist/axios-h5';
-import { PG } from '@u51/pg';
-import { Toast } from '@u51/week-ui';
-import toast from '../utils/toast';
+import axios from 'axios';
 
 const timeout = 16000;
 let stopResponse = false; // 多个请求401时只响应第一个
@@ -13,7 +10,7 @@ const commonResponseHandler = async error => {
         ajaxCount--;
     }
     if (ajaxCount === 0) {
-        toast.close();
+        console.log('toast close');
     }
 
     if (!error.response && !error.config) {
@@ -42,7 +39,7 @@ const commonResponseHandler = async error => {
             message,
         });
     }
-    Toast(message);
+    console.log('toast show');
     return Promise.reject(error);
 };
 
@@ -85,12 +82,12 @@ instance.interceptors.request.use(config => {
 
     // 无论如何，toast在16s之后一定会关闭掉
     timer = setTimeout(() => {
-        toast.close();
+        console.log('toast close');
     }, timeout);
 
     if (!config.silent) {
         ajaxCount++;
-        toast.loading();
+        console.log('toast show');
     }
 
     return config;
@@ -105,7 +102,7 @@ instance.interceptors.response.use(async response => {
     }
 
     if (ajaxCount === 0) {
-        toast.close();
+        console.log('toast close');
     }
 
     return response;

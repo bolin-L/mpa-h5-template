@@ -9,13 +9,13 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git@github.com:bolin-L/mpa-h5-template.git"
   },
   "license": "MIT",
   "scripts": {
     "dev": "NODE_ENV=development node_modules/.bin/webpack-dev-server --config compile/webpack.dev.config.js --progress --color",
     "build": "rimraf ./build/ && NODE_ENV=production webpack --config compile/webpack.pro.config.js --hide-modules -p",
-    "start": "NODE_ENV=development webpack-dev-server --config compile/webpack.dev.config.js --progress --color",
+    "start": "NODE_ENV=development webpack-dev-server --config compile/webpack.dev.config.js --progress --color"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.7",
@@ -44,11 +44,13 @@
     "eslint-plugin-vue": "^2.1.0",
     "events": "^1.1.1",
     "extract-text-webpack-plugin": "^3.0.1",
+    "glob": "^7.1.4",
     "html-webpack-plugin": "^2.30.1",
     "inline-manifest2-webpack-plugin": "^0.0.1",
     "node-sass": "^4.9.0",
     "postcss-loader": "^0.9.1",
     "postcss-px2rem": "^0.3.0",
+    "relative": "^3.0.2",
     "rimraf": "^2.5.4",
     "sass-loader": "^6.0.7",
     "script-ext-html-webpack-plugin": "^1.3.2",
@@ -64,12 +66,9 @@
   "dependencies": {
     "axios": "^0.16.2",
     "qs-url": "^1.0.3",
-    "vue": "^2.5.16",
-    "vue-router": "^3.0.2",
-    "vuex": "^3.0.1"
+    "vue": "^2.5.16"
   },
-  "hooks": "http://web.51.nb/hooks",
   "project": {
-    "type": "fe-template-rpd-yunying"
+    "type": "mpa-h5-template"
   }
 }
