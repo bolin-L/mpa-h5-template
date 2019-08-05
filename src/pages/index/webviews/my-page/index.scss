@@ -1,0 +1,203 @@
+.my-page {
+    padding-bottom: 50px;
+
+    .top {
+        background: #fff;
+        padding: 12px 16px 16px;
+    }
+
+    .wkui-cell-tap-active{
+        -webkit-tap-highlight-color: transparent;
+        &:active{
+            background: none;
+        }
+    }
+
+    .user {
+        display: flex;
+        justify-content: space-between;
+
+        &-left {
+            display: flex;
+            align-items: center;
+        }
+
+        &-avatar {
+            width: 46px;
+            height: 46px;
+            vertical-align: top;
+            border-radius: 23px;
+        }
+
+        &-info {
+            margin-left: 8px;
+            height: 46px;
+        }
+
+        &-name {
+            font-family: PingFangSC-Semibold;
+            font-size: 16px;
+            height: 22px;
+            line-height: 22px;
+            color: #333;
+            letter-spacing: 0;
+            text-align: center;
+        }
+
+        &-auth {
+            border: 1px solid #00D0AD;
+            padding: 0 8px;
+            border-radius: 2px;
+            font-family: PingFangSC-Regular;
+            font-size: 12px;
+            height: 20px;
+            line-height: 20px;
+            margin-top: 4px;
+            box-sizing: border-box;
+            color: #00D0AD;
+            letter-spacing: 0;
+            display: inline-block;
+
+            &-no {
+                border: 1px solid #999;
+                color: #999;
+            }
+        }
+
+        &-right {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        &-feedback {
+            font-family: PingFangSC-Regular;
+            font-size: 14px;
+            color: #333;
+            letter-spacing: 0;
+            height: 22px;
+            line-height: 22px;
+        }
+    }
+
+    .money {
+        margin-top: 31px;
+        display: flex;
+        justify-content: space-between;
+
+
+        &-left, &-right {
+            width: 164px;
+            height: 108px;
+            border-radius: 8px;
+            padding: 14px 16px 10px;
+            box-sizing: border-box;
+        }
+
+        &-left {
+            background-image: linear-gradient(-133deg, #00E6BF 0%, #00CCAA 100%);
+            color: #fff;
+        }
+
+        &-get {
+            &-title {
+                font-family: PingFangSC-Medium;
+                font-size: 16px;
+                color: #FFF;
+                letter-spacing: 0;
+                line-height: 20px;
+            }
+
+            &-count {
+                font-family: DINAlternate-Bold;
+                font-size: 24px;
+                color: #FFF;
+                letter-spacing: 0;
+                line-height: 24px;
+                height: 24px;
+                margin-top: 4px;
+            }
+
+            &-btn {
+                display: block;
+                width: 82px;
+                height:  26px;
+                background: #FFF;
+                border-radius: 13px;
+                font-family: PingFangSC-Medium;
+                font-size: 14px;
+                color: #00D0AD;
+                letter-spacing: 0;
+                margin-top: 12px;
+                text-align: center;
+                line-height: 26px;
+            }
+        }
+
+        &-right {
+            background: url("https://51nbimg.u51.com/beb526a51c4f4321bd7d40bb05374720.png") center center no-repeat;
+            background-size: cover;
+        }
+
+        &-right-top {
+            display: flex;
+            align-items: center;
+            height: 20px;
+        }
+
+        &-unget {
+            &-title {
+                font-family: PingFangSC-Medium;
+                font-size: 16px;
+                color: #FFF;
+                letter-spacing: 0;
+                line-height: 20px;
+            }
+
+            &-question {
+                width: 20px;
+                height: 20px;
+                border-radius: 10px;
+                background: #fff;
+                font-family: PingFangSC-Semibold;
+                font-size: 14px;
+                color: #DDE1EB;
+                letter-spacing: 0;
+                margin-left: 8px;
+                text-align: center;
+                line-height: 20px;
+            }
+
+            &-count {
+                font-family: DINAlternate-Bold;
+                font-size: 24px;
+                color: #FFF;
+                letter-spacing: 0;
+                line-height: 24px;
+                height: 24px;
+                margin-top: 4px;
+            }
+        }
+    }
+
+    .content {
+        padding: 0 16px;
+
+        .cell-box {
+            box-shadow: 0 1px 6px 0 rgba(234,234,234,0.50);
+            border-radius: 12px;
+            background: #fff;
+            padding: 2px 0;
+            margin-top: 12px;
+            overflow: hidden;
+        }
+
+        .cell-invite-right {
+            background: #FF6400;
+            border-radius: 10px;
+            color: #fff;
+            font-family: PingFangSC-Regular;
+            font-size: 10px;
+            padding: 2px 4px;
+        }
+    }
+}

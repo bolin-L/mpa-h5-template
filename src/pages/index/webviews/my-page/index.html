@@ -1,0 +1,51 @@
+<div class="my-page">
+    <div class="top">
+        <div class="user">
+            <div class="user-left">
+                <img :src="userInfo.avatar || defaultAvatar" class="user-avatar">
+                <div class="user-info">
+                    <p class="user-name">{{ userInfo.name }}</p>
+                    <p class="user-auth" v-if="userInfo.realName">已实名</p>
+                    <p class="user-auth user-auth-no" v-else @click="goRealName">未实名</p>
+                </div>
+            </div>
+            <div class="user-right">
+                <!--<p class="user-feedback">问题反馈</p>-->
+            </div>
+        </div>
+        <div class="money">
+            <div class="money-left">
+                <p class="money-get-title">账户余额</p>
+                <p class="money-get-count">{{ userInfo.balance | toFixed2 }}</p>
+                <a class="money-get-btn" @click="goPageBeforeRealName('take-cash')">去提现</a>
+            </div>
+            <div class="money-right">
+                <div class="money-right-top">
+                    <span class="money-unget-title">待核收入</span>
+                    <span class="money-unget-question" @click="showUngetExplain=true">?</span>
+                </div>
+                <p class="money-unget-count">{{ userInfo.unffectiveBalance | toFixed2 }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="cell-box">
+            <wk-cell title="账户明细" link @click="goPage('bill')"></wk-cell>
+            <wk-cell title="客户订单" :hasBorderBottom="false" link @click="goPage('order')"></wk-cell>
+        </div>
+        <div class="cell-box">
+            <wk-cell title="我的银行卡" link @click="goPageBeforeRealName('card-manage')"></wk-cell>
+            <wk-cell title="我的红包" :hasBorderBottom="false" link @click="goPage('coupon')"></wk-cell>
+        </div>
+        <div class="cell-box" @click="goRealName" v-if="!userInfo.realName">
+            <wk-cell title="实名认证" :hasBorderBottom="false" link></wk-cell>
+        </div>
+        <div class="cell-box">
+            <wk-cell title="好友邀请" :hasBorderBottom="false" @click="goPage('invite')" link>
+                <span class="cell-invite-right" slot="right">高返利</span>
+            </wk-cell>
+        </div>
+    </div>
+    <wk-alert v-model="showUngetExplain" text-align="center" @dialogClose="showUngetExplain=false" text="待核收入是客户投保后尚未结算的推广费，一般1～2个工作日后可以提现。" alert-text="我知道了"></wk-alert>
+    <real-name-modal :show="showRealNameModal" @close="showRealNameModal=false"></real-name-modal>
+</div>

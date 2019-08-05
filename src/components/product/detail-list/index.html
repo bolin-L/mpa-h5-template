@@ -1,0 +1,7 @@
+<div class="detail-list">
+    <div :class="['detail-list-item', noFirstPadding && index === 0 ? 'detail-list-item-nopadding' : '']" v-for="(item, index) in list" :key="index" v-if="index < maxCount">
+        <span class="detail-list-item-name" lines="1">{{ item.title }}</span>
+        <span class="detail-list-item-value">{{ item.price }}</span>
+    </div>
+    <span class="detail-list-item-more" v-if="moreLink" @click="goMore">更多保障详情</span>
+</div>

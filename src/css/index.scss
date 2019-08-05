@@ -1,0 +1,19 @@
+@font-face {
+	font-family: 'din alternate bold';
+	src: url('~root/css/DINAlternateBold.ttf') format('truetype');/*non-IE*/
+}
+
+.wkui-toast {
+	z-index: 999999;
+}
+
+*{
+	// 去掉ios点击态
+	-webkit-tap-highlight-color: transparent;
+	margin: 0;
+	padding: 0;
+}
+
+html, body{
+	height: 100%;
+}

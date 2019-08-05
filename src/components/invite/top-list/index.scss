@@ -1,0 +1,51 @@
+.top-list {
+    margin: 20px auto 0;
+    border-radius: 4px;
+    width: 343px;
+    box-sizing: border-box;
+    background: #f55b33;
+    padding: 12px 20px;
+
+    &-title {
+        font-family: PingFangSC-Medium;
+        font-size: 16px;
+        color: #FFF;
+        letter-spacing: 0;
+        text-align: center;
+        padding-bottom: 7px;
+    }
+
+    &-item {
+        display: flex;
+        height: 20px;
+        align-items: center;
+        margin-top: 5px;
+
+        &-index {
+            font-family: DINAlternate-Bold;
+            font-size: 16px;
+            color: #FFF;
+            letter-spacing: 0;
+            text-align: center;
+        }
+
+        &-avatar {
+            margin-left: 20px;
+            width: 20px;
+            height: 20px;
+            border-radius: 10px;
+        }
+
+        &-name, &-count {
+            font-family: PingFangSC-Regular;
+            font-size: 12px;
+            color: #FFF;
+            letter-spacing: 0;
+        }
+
+        &-name {
+            width: 143px;
+            margin-left: 8px;
+        }
+    }
+}

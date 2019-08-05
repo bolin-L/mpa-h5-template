@@ -1,0 +1,19 @@
+.empty {
+    padding: 100px 0;
+    width: 343px;
+
+    &-img {
+        width: 93px;
+        height: 91px;
+        vertical-align: top;
+        margin: 0 auto;
+        display: block;
+    }
+
+    &-text {
+        margin-top: 10px;
+        font-size: 14px;
+        color: #ccc;
+        text-align: center;
+    }
+}

@@ -1,0 +1,32 @@
+<div class="product-card" @click="goDetail()">
+    <div class="top">
+        <img :src="product.recommendPic" :alt="product.title" class="img">
+        <div class="info">
+            <p class="org">{{ product.org }}</p>
+            <h4 class="title">{{ product.title }}</h4>
+            <div class="desc">
+                <p class="desc-item" v-for="(item ,index) in product.keywords" :key="index">{{ item }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="money">
+            <div class="price">
+                <span class="price-count">{{ Math.floor(product.minPrice / 100) }}</span>
+                <span class="price-unit">元</span>
+            </div>
+            <div class="line">|</div>
+            <div class="rate" v-if="backMoney < 10">
+                <span class="rate-unit">返{{backMoney}}</span>
+                <span class="rate-count">{{ product.rate | changeUnitRate }}</span>
+                <span class="rate-unit">%</span>
+            </div>
+            <div class="rate" v-else>
+                <span class="rate-unit">返</span>
+                <span class="rate-count">{{ backMoney }}</span>
+                <span class="rate-unit">元</span>
+            </div>
+        </div>
+        <div class="btn" @click.stop="goSharePage">立即推广</div>
+    </div>
+</div>

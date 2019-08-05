@@ -1,0 +1,8 @@
+<wk-modal :mask-opacity="opacity"
+          class="share-mask"
+          @click="close"
+          v-model="show">
+    <div class="modal-content">
+        <slot></slot>
+    </div>
+</wk-modal>

@@ -1,0 +1,11 @@
+<div class="top-list">
+    <h4 class="top-list-title">本月龙虎榜</h4>
+    <div class="top-list-content">
+        <div class="top-list-item" v-for="(item, index) in list" :key="index">
+            <span class="top-list-item-index">{{ index + 1 }}</span>
+            <img :src="item.avatar" alt="" class="top-list-item-avatar">
+            <span class="top-list-item-name">{{ item.name }}</span>
+            <span class="top-list-item-count">已赚取{{ item.count }}元</span>
+        </div>
+    </div>
+</div>
