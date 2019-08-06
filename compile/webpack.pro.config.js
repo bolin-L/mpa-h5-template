@@ -61,7 +61,7 @@ const plugins = [
      * 抽出css
      * */
     new ExtractTextPlugin({
-        filename: '[name].[contenthash:10].css',
+        filename: 'css/[name].[contenthash:10].css',
         allChunks: true,
     }),
 
@@ -139,7 +139,6 @@ function getEntry (rootSrc) {
             template: '../src/index.html',
         })
     })
-    console.log('entries', entries);
     return entries;
 }
 
@@ -168,7 +167,7 @@ module.exports = {
      * */
     output: {
         path: path.resolve(__dirname, '../build'),
-        filename: '[name].[chunkhash:10].js',
+        filename: 'js/[name].[chunkhash:10].js',
         chunkFilename: '[id].[chunkhash:10].js',
         publicPath: './',
     },

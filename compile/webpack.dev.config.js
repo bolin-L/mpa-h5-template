@@ -47,7 +47,7 @@ const plugins = [
     /*
     * 抽出css
     * */
-    new ExtractTextPlugin('[name].[contenthash:10].css'),
+    new ExtractTextPlugin('css/[name].[contenthash:10].css'),
 
     new webpack.LoaderOptionsPlugin({
         vue: {
@@ -86,7 +86,6 @@ function getEntry (rootSrc) {
             template: '../src/index.html',
         })
     })
-    console.log('entries', entries);
     return entries;
 }
 
@@ -111,7 +110,7 @@ module.exports = {
     * */
     output: {
         path: path.resolve(__dirname, '../build'),
-        filename: '[name].[hash:10].js',
+        filename: 'js/[name].[hash:10].js',
         chunkFilename: '[id].[chunkhash:10].js',
     },
     module: {
