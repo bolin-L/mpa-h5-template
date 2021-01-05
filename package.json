@@ -64,7 +64,7 @@
     "webpack-dev-server": "^2.9.7"
   },
   "dependencies": {
-    "axios": "^0.16.2",
+    "axios": "^0.21.1",
     "qs-url": "^1.0.3",
     "vue": "^2.5.16"
   },
